@@ -14,9 +14,10 @@
 |:---------------------------------------------------------------------------------------------------|:------------|
 | **Student ID:**                                                                                    |  149632           |
 | **Name:**                                                                                          |    Mugisha Florent Guy         |
-| **What part of the lab did you personally contribute to,** <br>**and what did you learn from it?** |   I completed      Notebook 1 for our chosen stock, MSFT. In Notebook 1, I loaded MSFT and
+| **What part of the lab did you personally contribute to,** <br>**and what did you learn from it?** |   I completed      Notebook 1 for our chosen stock, MSFT. I loaded MSFT and
 its seven predictors, ran the data-quality checks (shape, info, describe, and the data
-quality report), built the candlestick chart, and computed simple and log returns.|
+quality report), built the candlestick chart, and computed simple and log returns.
+Notebook 1 taught me that a forecasting problem starts with the data, not the model. I also learned to load and sanity-check market data properly (shape, missing values, date ranges), read a candlestick chart, and, most importantly, understand why we forecast returns rather than price: because today's and tomorrow's prices are almost the same number, so a model can look accurate while just copying yesterday's value, and simple vs. log returns strip that trivial pattern out so the model has to actually learn something.|
 
 **Member 2**
 
