@@ -12,9 +12,12 @@
 
 | **Details**                                                                                        | **Comment** |
 |:---------------------------------------------------------------------------------------------------|:------------|
-| **Student ID:**                                                                                    |             |
-| **Name:**                                                                                          |             |
-| **What part of the lab did you personally contribute to,** <br>**and what did you learn from it?** |             |
+| **Student ID:**                                                                                    |  149632           |
+| **Name:**                                                                                          |    Mugisha Florent Guy         |
+| **What part of the lab did you personally contribute to,** <br>**and what did you learn from it?** |   I completed      Notebook 1 for our chosen stock, GOOGL. I loaded GOOGL and
+its seven predictors, ran the data-quality checks (shape, info, describe, and the data
+quality report), built the candlestick chart, and computed simple and log returns.
+Notebook 1 taught me that a forecasting problem starts with the data, not the model. I also learned to load and sanity-check market data properly (shape, missing values, date ranges), read a candlestick chart, and, most importantly, understand why we forecast returns rather than price: because today's and tomorrow's prices are almost the same number, so a model can look accurate while just copying yesterday's value, and simple vs. log returns strip that trivial pattern out so the model has to actually learn something.|
 
 **Member 2**
 
@@ -218,3 +221,57 @@ A model that does **not** beat the naive forecast does not lose marks for that r
 - [ ] Your written verdict says plainly whether the model beats the naive forecast.
 - [ ] The video is not longer than 4 minutes and the link works without a login.
 - [ ] The contribution of every team member is filled in at the top of this file.
+
+
+## Written Verdict - GOOGL, Intermediate Tier
+
+Data: Daily OHLCV data for GOOGL and seven predictors (S&P 500, a technology sector ETF,
+VIX, the 10-year Treasury yield, the US dollar index, Brent crude, and gold) were loaded for
+2,981 trading days, 2015-01-02 to 2026-11-09. Data quality checks confirmed no missing
+values. The series was downloaded on the 20th of November 2026
+
+Stationarity: GOOGL's price is non-stationary (a random walk with no fixed mean), while the
+log return is approximately stationary, confirmed with the ADF and KPSS tests and visible in
+the ACF/PACF plots (price highly autocorrelated at every lag, returns showing little to no
+autocorrelation). This is why every model below forecasts the next-day log return rather
+than price.
+
+Models and results: Under walk-forward validation (1,000-day initial training window,
+63-day test blocks, refit every fold, expanding window), we compared six classical and
+machine-learning models against the naive "tomorrow equals today" forecast (RMSE $3.5523):
+
+- Drift: RMSE $3.5523, no significant difference from naive (DM p = 0.429).
+- 20-day moving average: RMSE $9.5450, significantly WORSE than naive (DM p < 0.001).
+- Simple exponential smoothing: RMSE $3.5558, no significant difference (DM p = 0.552).
+- ARIMA(1,1,2), chosen by AIC: RMSE $3.5642, significantly WORSE than naive (DM p = 0.023).
+- ARMA(1,0) on GOOGL's own past only: RMSE $3.5617, no significant difference (DM p = 0.217).
+- ARMAX(1,0) with the seven predictors shifted by one day: RMSE $3.5544, the best
+  out-of-sample R-squared among the classical models at +0.0093, no significant difference
+  from naive (DM p = 0.323).
+- Ridge regression (about 47 engineered features): RMSE $3.5956, significantly WORSE than
+  naive (DM statistic 2.051, p = 0.040), out-of-sample R-squared -0.0159, hit rate 48.96%
+  (not significantly different from a coin flip, p = 0.394).
+- Gradient boosting (same features): RMSE $3.5674, no significant difference from naive (DM
+  statistic 1.621, p = 0.105), out-of-sample R-squared -0.0153, hit rate 52.27% (p = 0.058,
+  just short of significance at the 5% level).
+
+A look-ahead-bias check showed the danger of leakage directly: the honest feature set scored
+an out-of-sample R-squared of -0.0457, while deliberately including one leaky, centered
+rolling-mean feature inflated that score to 0.7977, a result the lab specifically warns to
+treat as a red flag rather than a breakthrough.
+
+Feature-group ablation found no single predictor group (returns, volatility, technical,
+volume, other markets, or calendar) meaningfully improved either model's R-squared on its
+own, consistent with the rest of the result: the signal in these predictors is weak.
+
+Verdict: No model statistically beats the naive forecast. The two models that do differ
+significantly from naive (the moving average and Ridge) are significantly WORSE, not better.
+ARMAX and gradient boosting are statistically indistinguishable from naive (DM p-values of
+0.323 and 0.105 respectively), meaning any apparent edge they show is well within the range
+explainable by chance. This null result is expected and consistent with the course's own
+framing: short-horizon stock return prediction is genuinely hard, and an honest "we could not
+beat tomorrow-equals-today" is a correct, markable finding rather than a failed experiment.
+The 63-day ARIMA price forecast (last actual close $288.15, forecast $287.93, 95% interval
+$219.73 to $377.29) illustrates this directly; the forecast barely moves from today's price,
+and the wide interval shows how much uncertainty 63 days out really carries.
+
