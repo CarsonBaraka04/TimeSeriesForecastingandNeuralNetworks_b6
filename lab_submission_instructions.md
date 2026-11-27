@@ -14,8 +14,7 @@
 |:---------------------------------------------------------------------------------------------------|:------------|
 | **Student ID:**                                                                                    |  149632           |
 | **Name:**                                                                                          |    Mugisha Florent Guy         |
-| **What part of the lab did you personally contribute to,** <br>**and what did you learn from it?** |   I completed Notebook 1 for our chosen stock, MSFT.
-In Notebook 1, I loaded MSFT and
+| **What part of the lab did you personally contribute to,** <br>**and what did you learn from it?** |   I completed Notebook 1 for our chosen stock, MSFT. In Notebook 1, I loaded MSFT and
 its seven predictors, ran the data-quality checks (shape, info, describe, and the data
 quality report), built the candlestick chart, and computed simple and log returns.|
 
