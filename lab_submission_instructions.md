@@ -228,8 +228,7 @@ A model that does **not** beat the naive forecast does not lose marks for that r
 Data: Daily OHLCV data for GOOGL and seven predictors (S&P 500, a technology sector ETF,
 VIX, the 10-year Treasury yield, the US dollar index, Brent crude, and gold) were loaded for
 2,981 trading days, 2015-01-02 to 2026-11-09. Data quality checks confirmed no missing
-values. The series was downloaded on [insert the date you/Carson actually ran
-download_data.py].
+values. The series was downloaded on the 20th of November 2026
 
 Stationarity: GOOGL's price is non-stationary (a random walk with no fixed mean), while the
 log return is approximately stationary, confirmed with the ADF and KPSS tests and visible in
@@ -273,6 +272,6 @@ explainable by chance. This null result is expected and consistent with the cour
 framing: short-horizon stock return prediction is genuinely hard, and an honest "we could not
 beat tomorrow-equals-today" is a correct, markable finding rather than a failed experiment.
 The 63-day ARIMA price forecast (last actual close $288.15, forecast $287.93, 95% interval
-$219.73 to $377.29) illustrates this directly — the forecast barely moves from today's price,
+$219.73 to $377.29) illustrates this directly; the forecast barely moves from today's price,
 and the wide interval shows how much uncertainty 63 days out really carries.
 
