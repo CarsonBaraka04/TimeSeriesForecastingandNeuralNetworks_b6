@@ -257,7 +257,7 @@ machine-learning models against the naive "tomorrow equals today" forecast (RMSE
 
 A look-ahead-bias check showed the danger of leakage directly: the honest feature set scored
 an out-of-sample R-squared of -0.0457, while deliberately including one leaky, centered
-rolling-mean feature inflated that score to 0.7977 — a result the lab specifically warns to
+rolling-mean feature inflated that score to 0.7977, a result the lab specifically warns to
 treat as a red flag rather than a breakthrough.
 
 Feature-group ablation found no single predictor group (returns, volatility, technical,
