@@ -13,8 +13,8 @@
 
 ```text
 .
-├── 1_market_data_and_candlesticks.ipynb
-├── 2_stationarity_and_returns.ipynb
+├── 1_market_data_and_candlesticks_MSFT.ipynb
+├── 2_stationarity_and_returns_MSFT.ipynb
 ├── 3_classical_forecasting_baselines.ipynb
 ├── 4_multivariate_machine_learning_forecasting.ipynb
 ├── 5_neural_networks_from_first_principles.ipynb
@@ -68,9 +68,7 @@
 
 **Data source:** [Yahoo! Finance](https://finance.yahoo.com/markets/stocks/most-active/heatmap/)
 
-**Key Stocks:**
-- Alphabet (GOOGL): [https://finance.yahoo.com/quote/GOOGL/](https://finance.yahoo.com/quote/GOOGL/)
-- NVIDIA (NVDA): [https://finance.yahoo.com/quote/NVDA/](https://finance.yahoo.com/quote/NVDA/)
+**Submission stock:** Microsoft (MSFT): [https://finance.yahoo.com/quote/MSFT/](https://finance.yahoo.com/quote/MSFT/)
 
 ## Lab Manual
 
@@ -78,8 +76,8 @@ Work through the notebooks in order. Each one starts with what you will learn, a
 
 | # | Notebook | What it teaches | Run time |
 |:--|:---------|:----------------|:---------|
-| 1 | [Market data, candlestick charts, and returns](1_market_data_and_candlesticks.ipynb) | OHLCV data, data quality checks, the predictors and why we chose them, prices versus returns | 1 minute |
-| 2 | [Stationarity, autocorrelation, and why we forecast returns](2_stationarity_and_returns.ipynb) | ADF and KPSS tests, differencing, ACF and PACF, spurious regression, volatility clustering and GARCH | 1 minute |
+| 1 | [Market data, candlestick charts, and returns — MSFT](1_market_data_and_candlesticks_MSFT.ipynb) | OHLCV data, data quality checks, the predictors and why we chose them, prices versus returns | 1 minute |
+| 2 | [Stationarity, autocorrelation, and why we forecast returns — MSFT](2_stationarity_and_returns_MSFT.ipynb) | ADF and KPSS tests, differencing, ACF and PACF, spurious regression, volatility clustering and GARCH | 1 minute |
 | 3 | [Classical forecasting baselines](3_classical_forecasting_baselines.ipynb) | Naive, drift, moving average, exponential smoothing, ARIMA, ARMAX, walk-forward validation, the Diebold-Mariano test | 2 minutes |
 | 4 | [Forecasting with many predictors](4_multivariate_machine_learning_forecasting.ipynb) | Feature engineering, look-ahead bias, Ridge, gradient boosting, tuning without leakage, feature ablation, prediction intervals, a back-test with trading costs | 2 minutes |
 | 5 | [Neural networks from first principles](5_neural_networks_from_first_principles.ipynb) | Neurons, loss, gradient descent, backpropagation in NumPy, overfitting, RNN, LSTM, GRU, CNN and attention explained with small examples | 4 to 8 minutes |
