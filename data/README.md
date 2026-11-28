@@ -2,14 +2,16 @@
 
 | File | What it is |
 |:-----|:-----------|
-| `target_NVDA.csv` | Daily Open, High, Low, Close and Volume of the stock we forecast. Prices are adjusted for splits and dividends. |
+| `target_MSFT.csv` | Active submission target: daily Open, High, Low, Close and Volume for Microsoft (MSFT). |
+| `target_NVDA.csv` | Reference dataset; not the active submission target. |
+| `target_GOOGL.csv` | Older/reference dataset; not the active submission target. |
 | `predictors.csv` | The daily closing level of the seven predictor markets: S&P 500 (`SP500`), a technology sector fund (`TECH`), the VIX (`VIX`), the 10-year US Treasury yield (`US10Y`), the US dollar index (`USD`), Brent crude oil (`BRENT`) and gold (`GOLD`). |
-| `forecast_basic.csv`, `forecast_backtest.csv` | Created when you run Notebook 7. These are the files you import into Power BI. |
+| `forecast_basic.csv` | User-provided MSFT forecast export with the required `date`, `forecast`, `lower`, `upper` columns (63 rows). Verify its generating model and data snapshot against the notebook analysis before final submission. |
 | `Download Data - STOCK_KE_XNAI_SCOM.csv` | A small example of a price file downloaded by hand (Safaricom, from MarketWatch). It shows what such a file looks like before it is cleaned. |
 
 ## Where the data comes from
 
-The market data was downloaded from Yahoo Finance with the `yfinance` Python package on **17 October 2026**, for the period **2 January 2015 to 30 September 2026**, using `python download_data.py`. The same script made the files in this folder.
+The repository snapshot includes MSFT data through **9 November 2026**. Verify and state the actual download date for the final MSFT run; do not reuse dates from earlier ticker snapshots.
 
 The data is provided for teaching and for your own learning only. It remains subject to the terms of the data provider. Do not redistribute it, and do not use it for trading decisions.
 

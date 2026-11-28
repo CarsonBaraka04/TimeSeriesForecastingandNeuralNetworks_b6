@@ -4,52 +4,41 @@
 
 ## Student Details
 
-**Name of the team on GitHub Classroom:**
+**Name of the team on GitHub Classroom:** B6
 
-**Team Member Contributions:**
+**Team Member Contributions:** The entries below are draft descriptions aligned with the assigned notebooks. Each member must verify that the work and learning reflection are accurate, and revise anything that does not reflect their actual contribution before submission.
 
 **Member 1**
 
-| **Details**                                                                                        | **Comment** |
-|:---------------------------------------------------------------------------------------------------|:------------|
-| **Student ID:**                                                                                    |  149632           |
-| **Name:**                                                                                          |    Mugisha Florent Guy         |
-| **What part of the lab did you personally contribute to,** <br>**and what did you learn from it?** |   I completed      Notebook 1 for our chosen stock, GOOGL. I loaded GOOGL and
-its seven predictors, ran the data-quality checks (shape, info, describe, and the data
-quality report), built the candlestick chart, and computed simple and log returns.
-Notebook 1 taught me that a forecasting problem starts with the data, not the model. I also learned to load and sanity-check market data properly (shape, missing values, date ranges), read a candlestick chart, and, most importantly, understand why we forecast returns rather than price: because today's and tomorrow's prices are almost the same number, so a model can look accurate while just copying yesterday's value, and simple vs. log returns strip that trivial pattern out so the model has to actually learn something.|
+| **Details** | **Comment** |
+|:--|:--|
+| **Student ID:** | 149632 |
+| **Name:** | Mugisha Florent Guy |
+| **Contribution and learning reflection — draft to verify:** | I worked on Notebook 1: loading MSFT and its predictors, checking data quality, examining the candlestick chart, and calculating returns. I learned that forecasting starts with checking the data and that returns are more informative for this task than simply predicting a price close to yesterday's. Mugisha: confirm or revise this to match your actual work and learning. |
 
 **Member 2**
 
-| **Details**                                                                                        | **Comment** |
-|:---------------------------------------------------------------------------------------------------|:------------|
-| **Student ID:**                                                                                    |             |
-| **Name:**                                                                                          |             |
-| **What part of the lab did you personally contribute to,** <br>**and what did you learn from it?** |             |
+| **Details** | **Comment** |
+|:--|:--|
+| **Student ID:** | 146705 |
+| **Name:** | Shem Oloo Okola |
+| **Contribution and learning reflection — draft to verify:** | I worked on Notebook 2: testing MSFT prices and returns for stationarity and reviewing autocorrelation diagnostics. I learned why a price series can be non-stationary while returns are more suitable for forecasting, and how ADF/KPSS and ACF/PACF provide complementary evidence. Shem: confirm or revise this to match your actual work and learning. |
 
 **Member 3**
 
-| **Details**                                                                                        | **Comment** |
-|:---------------------------------------------------------------------------------------------------|:------------|
-| **Student ID:**                                                                                    |             |
-| **Name:**                                                                                          |             |
-| **What part of the lab did you personally contribute to,** <br>**and what did you learn from it?** |             |
+| **Details** | **Comment** |
+|:--|:--|
+| **Student ID:** | 169883 |
+| **Name:** | Javen Getenga |
+| **Contribution and learning reflection — draft to verify:** | I worked on Notebook 3: comparing classical MSFT forecasting baselines with the naive forecast using walk-forward validation and error metrics. I learned that time-series validation must preserve chronology and that a model should only be called useful if it improves on a simple benchmark on unseen data. Javen: confirm or revise this to match your actual work and learning. |
 
 **Member 4**
 
-| **Details**                                                                                        | **Comment** |
-|:---------------------------------------------------------------------------------------------------|:------------|
-| **Student ID:**                                                                                    |             |
-| **Name:**                                                                                          |             |
-| **What part of the lab did you personally contribute to,** <br>**and what did you learn from it?** |             |
-
-**Member 5**
-
-| **Details**                                                                                        | **Comment** |
-|:---------------------------------------------------------------------------------------------------|:------------|
-| **Student ID:**                                                                                    |             |
-| **Name:**                                                                                          |             |
-| **What part of the lab did you personally contribute to,** <br>**and what did you learn from it?** |             |
+| **Details** | **Comment** |
+|:--|:--|
+| **Student ID:** | 158667 |
+| **Name:** | Carson Bwire |
+| **Contribution and learning reflection — draft to verify:** | I worked on Notebook 4: building and checking MSFT forecasting features, evaluating multivariate models, and reviewing feature ablation. I learned how look-ahead leakage can create misleadingly strong results and why feature engineering, tuning, and scaling must respect the time split. Carson: confirm or revise this to match your actual work and learning. |
 
 ## Scenario
 
@@ -63,7 +52,7 @@ You will answer that question using **real market data** and **several predictor
 
 ## Dataset
 
-1. Your group must forecast **a stock that is different from NVDA**. Choose a company whose price history is available on Yahoo Finance (for example MSFT, JPM, TSLA, NVDA, KO, or a company listed on another exchange).
+1. For this submission, the group forecasts **Microsoft (MSFT)**, which is different from the NVDA stock used in the teaching examples.
 2. Download the data with the helper script:
 
     ```shell
@@ -223,55 +212,17 @@ A model that does **not** beat the naive forecast does not lose marks for that r
 - [ ] The contribution of every team member is filled in at the top of this file.
 
 
-## Written Verdict - GOOGL, Intermediate Tier
+## Written Verdict - MSFT, Intermediate Tier (complete after rerunning)
 
-Data: Daily OHLCV data for GOOGL and seven predictors (S&P 500, a technology sector ETF,
-VIX, the 10-year Treasury yield, the US dollar index, Brent crude, and gold) were loaded for
-2,981 trading days, 2015-01-02 to 2026-11-09. Data quality checks confirmed no missing
-values. The series was downloaded on the 20th of November 2026
+**Important:** earlier cached analysis figures are not MSFT results and must not be presented as such. The notebooks have been switched to MSFT and their cached outputs cleared so the team can regenerate results from the MSFT snapshot.
 
-Stationarity: GOOGL's price is non-stationary (a random walk with no fixed mean), while the
-log return is approximately stationary, confirmed with the ADF and KPSS tests and visible in
-the ACF/PACF plots (price highly autocorrelated at every lag, returns showing little to no
-autocorrelation). This is why every model below forecasts the next-day log return rather
-than price.
+Complete this verdict after running the MSFT notebooks from a fresh kernel and reconciling the data cut-off across all exports:
 
-Models and results: Under walk-forward validation (1,000-day initial training window,
-63-day test blocks, refit every fold, expanding window), we compared six classical and
-machine-learning models against the naive "tomorrow equals today" forecast (RMSE $3.5523):
+- **Data and download date:** [state source, download date, date range, row count, and data-quality findings]
+- **Stationarity:** [report ADF and KPSS results for MSFT closing price and log return, and explain the conclusion]
+- **Validation protocol:** [state initial training length, walk-forward test blocks, tuning boundary, and how scalers/models were fitted only on training data]
+- **Model comparison:** [report naive, classical, and multivariate model RMSE, MAE, out-of-sample R², directional accuracy, and DM p-values]
+- **Interval and horizons:** [report 10th–90th interval coverage and model skill at horizons 1, 5, 21 and 63 days]
+- **Verdict:** [state plainly whether any model beats the naive forecast, cite the evidence, and describe uncertainty in the 63-day forecast]
 
-- Drift: RMSE $3.5523, no significant difference from naive (DM p = 0.429).
-- 20-day moving average: RMSE $9.5450, significantly WORSE than naive (DM p < 0.001).
-- Simple exponential smoothing: RMSE $3.5558, no significant difference (DM p = 0.552).
-- ARIMA(1,1,2), chosen by AIC: RMSE $3.5642, significantly WORSE than naive (DM p = 0.023).
-- ARMA(1,0) on GOOGL's own past only: RMSE $3.5617, no significant difference (DM p = 0.217).
-- ARMAX(1,0) with the seven predictors shifted by one day: RMSE $3.5544, the best
-  out-of-sample R-squared among the classical models at +0.0093, no significant difference
-  from naive (DM p = 0.323).
-- Ridge regression (about 47 engineered features): RMSE $3.5956, significantly WORSE than
-  naive (DM statistic 2.051, p = 0.040), out-of-sample R-squared -0.0159, hit rate 48.96%
-  (not significantly different from a coin flip, p = 0.394).
-- Gradient boosting (same features): RMSE $3.5674, no significant difference from naive (DM
-  statistic 1.621, p = 0.105), out-of-sample R-squared -0.0153, hit rate 52.27% (p = 0.058,
-  just short of significance at the 5% level).
-
-A look-ahead-bias check showed the danger of leakage directly: the honest feature set scored
-an out-of-sample R-squared of -0.0457, while deliberately including one leaky, centered
-rolling-mean feature inflated that score to 0.7977, a result the lab specifically warns to
-treat as a red flag rather than a breakthrough.
-
-Feature-group ablation found no single predictor group (returns, volatility, technical,
-volume, other markets, or calendar) meaningfully improved either model's R-squared on its
-own, consistent with the rest of the result: the signal in these predictors is weak.
-
-Verdict: No model statistically beats the naive forecast. The two models that do differ
-significantly from naive (the moving average and Ridge) are significantly WORSE, not better.
-ARMAX and gradient boosting are statistically indistinguishable from naive (DM p-values of
-0.323 and 0.105 respectively), meaning any apparent edge they show is well within the range
-explainable by chance. This null result is expected and consistent with the course's own
-framing: short-horizon stock return prediction is genuinely hard, and an honest "we could not
-beat tomorrow-equals-today" is a correct, markable finding rather than a failed experiment.
-The 63-day ARIMA price forecast (last actual close $288.15, forecast $287.93, 95% interval
-$219.73 to $377.29) illustrates this directly; the forecast barely moves from today's price,
-and the wide interval shows how much uncertainty 63 days out really carries.
-
+Do not fill these fields with old cached values from a different ticker. The notebook responsibilities above identify the four-way work allocation, not proof of completed work. Each member must confirm what they personally completed and add their own learning reflection.
